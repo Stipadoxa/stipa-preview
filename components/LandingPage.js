@@ -1,6 +1,19 @@
 import React from 'react';
 
 const LandingPage = () => {
+  const handleShare = () => {
+    // Copy to clipboard
+    navigator.clipboard.writeText(window.location.href);
+    
+    // Track share event in Google Analytics
+    window.gtag('event', 'share_click', {
+      'event_category': 'engagement',
+      'event_label': 'Share button clicked'
+    });
+
+    alert('Link copied to clipboard!');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-xl p-8">
@@ -20,10 +33,7 @@ const LandingPage = () => {
 
         {/* Share Button */}
         <button 
-          onClick={() => {
-            navigator.clipboard.writeText(window.location.href);
-            alert('Link copied to clipboard!');
-          }}
+          onClick={handleShare}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
         >
           Share with friends
