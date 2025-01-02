@@ -2,25 +2,21 @@ import React from 'react';
 
 const LandingPage = () => {
   const handleShare = () => {
-    // Copy to clipboard
     navigator.clipboard.writeText(window.location.href);
-    
-    // Track share event in Google Analytics
     window.gtag('event', 'share_click', {
       'event_category': 'engagement',
       'event_label': 'Share button clicked'
     });
-
     alert('Link copied to clipboard!');
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-xl p-8">
-        <h1 className="text-3xl font-bold mb-6">Бувай (our time is up)</h1>
+    <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 py-6 flex flex-col justify-center px-4">
+      <div className="max-w-3xl mx-auto w-full bg-white/10 backdrop-blur rounded-xl shadow-xl p-8">
+        <h1 className="text-4xl font-bold mb-8 text-white">Бувай (our time is up)</h1>
         
         {/* SoundCloud Player */}
-        <div className="mb-8">
+        <div className="mb-8 rounded-lg overflow-hidden">
           <iframe
             width="100%"
             height="300"
@@ -34,7 +30,9 @@ const LandingPage = () => {
         {/* Share Button */}
         <button 
           onClick={handleShare}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+          className="w-full md:w-auto px-8 py-3 bg-blue-500 text-white rounded-lg font-medium 
+                   hover:bg-blue-600 transition-all duration-200 shadow-lg 
+                   hover:shadow-blue-500/25 active:transform active:scale-95"
         >
           Share with friends
         </button>
